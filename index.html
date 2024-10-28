@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/0e469536da.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Google Font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- CSS  -->
+    <link rel="stylesheet" href="./styles/style.css" />
+    <!-- Daisy Ui -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- tailwind Css -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="./images/logo.webp" type="image/x-icon" />
+    <title>Peddy</title>
+  </head>
+  <body class="lato">
+    <header class="w-4/5 mx-auto">
+      <!-- Navbar  -->
+      <nav>
+        <div class="navbar bg-base-100">
+          <div class="navbar-start my-8">
+            <div class="dropdown">
+              <div
+                tabindex="0"
+                role="button"
+                class="btn btn-ghost lg:hidden mr-2"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 6h16M4 12h8m-8 6h16"
+                  />
+                </svg>
+              </div>
+              <ul
+                tabindex="0"
+                class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2"
+              >
+                <li><a href="#banner">Home</a></li>
+                <li><a href="#main">Shop</a></li>
+                <li><a href="#footer">Contact</a></li>
+              </ul>
+            </div>
+            <div class="flex">
+              <img
+                src="./images/logo.webp"
+                alt=""
+                class="w-full object-contain"
+              />
+              <p class="mx-2 text-xl md:text-2xl font-extrabold">Peddy</p>
+            </div>
+          </div>
+          <div class="navbar-center hidden lg:flex">
+            <ul class="menu menu-horizontal px-1">
+              <li><a href="#banner" class="text-lg">Home</a></li>
+              <li><a href="#main" class="text-lg">Shop</a></li>
+              <li><a href="#footer" class="text-lg">Contact</a></li>
+            </ul>
+          </div>
+          <div class="navbar-end">
+            <img
+              src="./images/user.png"
+              alt=""
+              class="w-[40px] bg-gray-200 rounded-full p-2 hover:bg-white cursor-pointer"
+            />
+          </div>
+        </div>
+      </nav>
+      <!-- New Navbar End  -->
+
+      <!-- Banner Div  -->
+      <div class="banner-div my-14 text-center" id="banner">
+        <p class="text-xl md:text-3xl text-gray-500 font-bold">
+          Bringing Families Together 🔥
+        </p>
+        <p class="text-3xl md:text-7xl my-5 leading-snug font-extrabold">
+          Your Path to Adoption <br />
+          <span>Starts Here</span>
+        </p>
+        <p class="w-full lg:w-3/4 mx-auto text-base md:text-xl font-medium">
+          It is a long established fact that a reader will be distracted by the
+          readable content of a page when looking at its layout.There is a quote
+          "Money can buy a fine dog, but only love can make him wag his tail.”
+          “Do not pity a shelter dog. Adopt one.” “Do you believe in love at
+          first sight, or should I wag my tail again?"
+        </p>
+        <button class="btn btn-lg my-10 bg-[#0E7A81] text-white">
+          <a href="#main">View More</a>
+        </button>
+        <div class="flex justify-center my-16">
+          <img src="./images/pet.webp" alt="" />
+        </div>
+      </div>
+    </header>
+    <main id="main" class="w-4/5 mx-auto">
+      <div class="banner-heading text-center">
+        <p class="text-2xl font-semibold my-3">Adopt Your Best Friend</p>
+        <p class="w-full lg:w-1/2 mx-auto leading-snug text-gray-500">
+          It is a long established fact that a reader will be distracted by the
+          readable content of a page when looking at its layout. The point of
+          using Lorem Ipsum is that it has a.
+        </p>
+      </div>
+      <!-- load Data Dynamically through categories -->
+      <div
+        class="my-10 block text-center md:grid grid-cols-2 lg:flex justify-between items-center"
+        id="category-btn-container"
+      ></div>
+      <!-- All Data Fetch  -->
+      <div class="flex items-center justify-between my-10">
+        <h3 class="text-xl md:text-2xl font-bold my-8">Best Deal For You</h3>
+        <button
+          class="btn md:btn-lg bg-[#0E7A81] text-white"
+          id="sort-by-price"
+          onclick="sortPetByPrice()"
+        >
+          Sort By Price
+        </button>
+      </div>
+      <div class="block md:flex gap-10 justify-evenly" id="best-deal-container">
+        <div
+          id="all-pets-container"
+          class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-5"
+        ></div>
+        <!-- Spinner  -->
+        <div id="spinner-container" class="flex justify-center w-full">
+          <span class="loading loading-bars loading-xs mx-4"></span>
+          <span class="loading loading-bars loading-sm mx-4"></span>
+          <span class="loading loading-bars loading-md mx-4"></span>
+          <span class="loading loading-bars loading-lg mx-4"></span>
+        </div>
+        <!-- spinner End -->
+        <div
+          class="w-auto md:w-[500px] lg:w-[700px] my-10 md:my-0"
+          id="fav-pets-container"
+        >
+          <div
+            class="bg-white shadow-lg p-5 shadow-black rounded-lg"
+            id="h1-div"
+          >
+            <h1
+              class="block text-center text-2xl font-bold"
+              id="fav-pet-containerDummyText"
+            >
+              You haven't like any pet yet
+            </h1>
+          </div>
+          <div class="" id="fav-pet-container"></div>
+        </div>
+      </div>
+    </main>
+    <footer
+      class="bg-black mt-36 p-20 md:p-32 text-white grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center md:justify-items-center"
+      id="footer"
+    >
+      <!-- Address Div  -->
+      <div>
+        <div class="flex items-center">
+          <img src="./images/logo.webp" alt="logo" class="object-contain" />
+          <h3 class="text-2xl mx-3 font-bold">Peddy</h3>
+        </div>
+        <div class="my-3 leading-snug">
+          <p>Location: av. Washington 165, NY CA 54003</p>
+          <p>Phone: +31 85 964 47 25</p>
+          <p>Email: info@yourdomain.com</p>
+          <p>Openings hours: 9.00 AM - 5.00 PM</p>
+        </div>
+        <div class="flex space-x-7">
+          <img src="./images/icons8-facebook-25.png" alt="" class="w-[40px]" />
+          <img
+            src="./images/twitter.jpg"
+            alt=""
+            class="w-[40px] object-contain"
+          />
+          <img src="./images/icons8-youtube-25.png" alt="" class="w-[40px]" />
+          <img src="./images/icons8-instagram-25.png" alt="" class="w-[40px]" />
+        </div>
+      </div>
+      <!-- Useful Links  -->
+      <div class="my-10 lg:my-0">
+        <h2 class="text-xl font-bold">Useful Links</h2>
+        <div class="my-5">
+          <p class="text-[#FFFFFF99] my-2">HOME</p>
+          <p class="text-[#FFFFFF99] my-2">ABOUT US</p>
+          <p class="text-[#FFFFFF99] my-2">ANIMALS</p>
+          <p class="text-[#FFFFFF99] my-2">FOUNDATION</p>
+          <p class="text-[#FFFFFF99] my-2">CONTACT</p>
+        </div>
+      </div>
+      <!-- Drop A message -->
+      <div>
+        <h2 class="text-xl font-bold">Drop a Message</h2>
+        <label
+          class="input input-bordered flex items-center gap-2 bg-[#ffffff46] my-5 lg:w-[350px]"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            class="h-4 w-4 opacity-70"
+          >
+            <path
+              d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z"
+            />
+            <path
+              d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z"
+            />
+          </svg>
+          <input type="text" class="grow" placeholder="Email" />
+        </label>
+        <div class="text-center md:text-left">
+          <button
+            class="btn w-[150px] lg:w-[350px] bg-[#0E7A81] text-white border-none"
+          >
+            Subscribe
+          </button>
+        </div>
+      </div>
+    </footer>
+    <script src="./Js/script.js"></script>
+  </body>
+</html>
